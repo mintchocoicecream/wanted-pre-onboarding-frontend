@@ -1,0 +1,27 @@
+@import "css/reset.css";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap");
+@import "css/Home.module.css";
+
+:root {
+  --font: "Noto Serif KR", serif;
+  --mainColor: rgb(0, 211, 148);
+  --black: rgb(41, 41, 41);
+}
+
+body {
+  font-family: var(--font);
+  height: 100vh;
+  display: flex;
+}
+
+#root {
+  display: flex;
+  width: 100%;
+  margin: 2% 0;
+  justify-content: center;
+  /* background-color: aliceblue; */
+}
+
+h1 {
+  cursor: default;
+}

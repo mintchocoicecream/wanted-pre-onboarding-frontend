@@ -1,0 +1,110 @@
+.home,
+.homeLogin,
+.loginForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.home {
+  width: 100%;
+  padding: 0 20%;
+  align-items: center;
+}
+.home > h1 {
+  margin: 5% 0;
+  display: flex;
+  align-items: center;
+  font-size: 2.5em;
+  color: var(--black);
+}
+.home img {
+  width: 1.5em;
+}
+
+.homeLogin {
+  width: 100%;
+  padding: 5% 0;
+  border: 2px solid var(--black);
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0.1em 0.8em 0.8em rgb(195, 195, 195);
+}
+
+.homeSignup {
+  top: 25%;
+  background-color: white;
+  width: 60%;
+  position: absolute;
+  opacity: 0;
+  animation: showSignup 1s ease-in-out forwards;
+}
+
+@keyframes showSignup {
+  from {
+    transform: translateY(10%);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.closedSignup {
+  cursor: pointer;
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  font-size: 1.2em;
+  transition: all 0.3s ease-in-out;
+}
+.closedSignup:hover {
+  color: pink;
+}
+
+.homeLogin > h1 {
+  border-bottom: 2px solid var(--black);
+  padding: 0 1%;
+  padding-bottom: 5px;
+  margin-bottom: 5%;
+  font-size: 1.2em;
+}
+
+.loginForm {
+  width: 500px;
+  padding-bottom: 5%;
+}
+.loginForm input,
+.loginForm span {
+  padding: 15px;
+  margin-bottom: 2%;
+  border: none;
+  outline: none;
+  font-family: var(--font);
+  transition: all 0.3s ease-in-out;
+}
+.loginForm input:not(:nth-child(3)) {
+  border: 1px solid var(--black);
+  border-radius: 5px;
+}
+
+.loginForm input:focus {
+  background-color: aquamarine;
+}
+.loginForm input:nth-child(3) {
+  background-color: rgb(199, 199, 199, 0.7);
+}
+.loginForm > span {
+  padding: 18px 0;
+  text-align: center;
+  background-color: var(--black);
+  color: whitesmoke;
+}
+.loginForm input:nth-child(3),
+.loginForm span {
+  cursor: pointer;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+.loginForm input:nth-child(3):hover,
+.loginForm span:hover {
+  opacity: 0.7;
+}
