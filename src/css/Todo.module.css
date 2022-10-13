@@ -1,16 +1,144 @@
 .todo {
   width: inherit;
-  background-color: aliceblue;
   position: relative;
+}
+
+.todoTitle,
+.todoDiv,
+.todoForm,
+.todoLists {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todoTitle {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: var(--black);
+}
+
+.todoDiv {
+  margin-top: 3%;
+  flex-direction: column;
+}
+
+.todoTitle h1 {
+  margin: 0 1%;
+}
+
+.todoTitle img {
+  width: 3%;
+}
+
+.todoForm {
+  width: 40%;
+  margin-bottom: 3%;
+  position: relative;
+}
+
+.todoForm input,
+.todoForm button {
+  outline: none;
+  border: none;
+  font-family: var(--font);
+  transition: var(--transition);
+}
+.todoForm input {
+  padding: 15px 15px;
+  width: 100%;
+  background-color: var(--lightColor);
+  border-radius: 20px;
+  border: 2px solid var(--lightColor);
+  font-size: 1em;
+  box-shadow: var(--shadow2);
+}
+.todoForm input:focus {
+  border: 2px solid var(--mainColor);
+  background-color: white;
+}
+.todoForm button {
+  cursor: pointer;
+  padding: 18px 15px;
+  border-top-right-radius: 18px;
+  border-bottom-right-radius: 18px;
+  position: absolute;
+  right: 0;
+  color: var(--black);
+  background-color: rgba(255, 255, 255, 0);
+}
+.todoForm button:hover {
+  color: var(--mainColor);
+}
+
+.todoLists {
+  border: 2px solid var(--mainColor);
+  padding: 1%;
+  border-radius: 8px;
+  width: 40%;
+}
+
+.todoLists ul {
+  width: 100%;
+}
+
+.todoLists li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border-bottom: 1px solid var(--mainColor);
+  animation: showTodo 0.8s ease-in-out;
+  transition: var(--transition2);
+}
+
+@keyframes showTodo {
+  from {
+    transform: translateY(15px);
+  }
+  to {
+  }
+}
+
+.todoLists li:hover {
+  background-color: pink;
+}
+
+.todoLi {
+  cursor: default;
+}
+
+.todoBtns {
+  width: 20%;
+  display: flex;
+}
+
+.todoBtns span {
+  width: 100%;
+  text-align: center;
+}
+
+.icon {
+  cursor: pointer;
+  transition: var(--transition2);
+}
+
+.icon:hover {
+  color: var(--mainColor);
+}
+
+.todoDel {
+  margin-left: 5px;
 }
 
 .logout {
   position: absolute;
   right: 3%;
-  top: 3%;
+  bottom: 0;
   background-color: pink;
   padding: 5px;
   border: 1px solid black;
+  box-shadow: var(--shadow1);
   transition: all 0.2s ease-in-out;
 }
 

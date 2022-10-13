@@ -1,3 +1,5 @@
+import { faSquarePlus } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -44,7 +46,6 @@ function Todo({url}){
     const handleClick = (e) => {
         e.preventDefault();
         if(todos.todo !== ""){
-            //createTodo Post
             axios.post(URL+"todos", {
                 todo: todos.todo,
             }, {
@@ -71,17 +72,23 @@ function Todo({url}){
 
     return(
         <div className="todo">
-            <h1>TODO</h1>
-            <div className="todoForm">
-                <input onChange={handleChange} placeholder="To Do..." maxLength="30" value={todos.todo}/>
-                <button onClick={handleClick}>입력</button>
+            <div className="todoTitle">
+                <img src="https://user-images.githubusercontent.com/64584574/194312063-9b4a3275-bebc-49bb-8ef9-8b8f1222d9ea.png" alt="mintchocoicecream"/>
+                <h1>To:Do</h1>
+                <img src="https://user-images.githubusercontent.com/64584574/194312063-9b4a3275-bebc-49bb-8ef9-8b8f1222d9ea.png" alt="mintchocoicecream"/>
             </div>
-            <div className="todoLists">
-                <ul>
-                    {todoArr.map((td) => (
-                        <TodoList key={td.id} todo={td.todo} todoId={td.id}/>
-                    ))}
-                </ul>
+            <div className="todoDiv">
+                <div className="todoForm">
+                    <input onChange={handleChange} placeholder="To Do..." maxLength="30" value={todos.todo}/>
+                    <button onClick={handleClick}><FontAwesomeIcon icon={faSquarePlus} size="2x"/></button>
+                </div>
+                <div className="todoLists">
+                    <ul>
+                        {todoArr.map((td) => (
+                            <TodoList key={td.id} todo={td.todo} todoId={td.id}/>
+                        ))}
+                    </ul>
+                </div>
             </div>
             <Link className="logout" onClick={onLogout} to="/">Logout</Link>
         </div>

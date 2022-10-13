@@ -6,7 +6,12 @@
 :root {
   --font: "Noto Serif KR", serif;
   --mainColor: rgb(0, 211, 148);
+  --lightColor: rgba(0, 255, 179, 0.3);
   --black: rgb(41, 41, 41);
+  --transition: all 0.3s ease-in-out;
+  --transition2: all 0.2s ease-in-out;
+  --shadow1: 0.1em 0.2em 0.5em rgb(142, 176, 164);
+  --shadow2: 0.1em 0.2em 0.5em rgb(176, 210, 198);
 }
 
 body {
