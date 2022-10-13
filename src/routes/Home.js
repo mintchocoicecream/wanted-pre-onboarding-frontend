@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-function Home(){
-    const URL = "https://pre-onboarding-selection-task.shop/"
+function Home({url}){
+    const URL = url;
     const LOGIN_KEY = "login_info";
 
     const [join, setJoin] = useState(false);
@@ -49,13 +49,12 @@ function Home(){
         })
         .then((res) => {
             const accessToken = res.data.access_token;
-            console.log(accessToken);
             localStorage.setItem(LOGIN_KEY, accessToken);
             document.location.href = "/todos";
         })
         .catch((err) => {
-            console.log(err);
-            console.log(err.response.data.message);
+            // console.log(err);
+            // console.log(err.response.data.message);
             setData(initialTargets);
         })
         console.log(data);
