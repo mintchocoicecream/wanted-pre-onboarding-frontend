@@ -21,7 +21,7 @@ function Todo({url}){
     //getTodos get
     useEffect(()=>{
         if(!savedInfos){
-            document.location.href = "/";
+            document.location.href = `${process.env.PUBLIC_URL}/`;
         }
         axios.get(axioses.URL+"todos", {
             headers: {

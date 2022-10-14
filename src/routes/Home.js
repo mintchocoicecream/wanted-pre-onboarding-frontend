@@ -15,7 +15,7 @@ function Home({url}){
     const savedInfos = localStorage.getItem(LOGIN_KEY);
     useEffect(()=>{
         if(savedInfos){
-            document.location.href = "/todos";
+            document.location.href = `${process.env.PUBLIC_URL}/todos`;
         }
     })
 
