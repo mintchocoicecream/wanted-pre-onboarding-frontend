@@ -5,7 +5,7 @@ import Todo from "../routes/Todo";
 
 const AppRouter = ({urlObj}) => {
     return(
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
             <Switch>
                     <Route exact path="/">
                         <Home url={urlObj}/>
