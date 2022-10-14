@@ -32,6 +32,7 @@ function Home({url}){
         if(!join){
             setJoin(true)
         }
+        setData(initialTargets);
     }
 
     const offSignup = () => {
@@ -53,11 +54,9 @@ function Home({url}){
             document.location.href = "/todos";
         })
         .catch((err) => {
-            // console.log(err);
-            // console.log(err.response.data.message);
+            window.alert("아이디 또는 비밀번호를 확인해주세요.")
             setData(initialTargets);
         })
-        console.log(data);
     }
 
     const handleSignup = async(e) => {
@@ -69,15 +68,13 @@ function Home({url}){
         .then((res) => {
             console.log(res.data);
             setErrorM("");
-            // document.location.href = "/";
+            setJoin(false);
         })
         .catch((err) => {
             console.log(err);
             setErrorM(err.response.data.message);
-            setData(initialTargets);
         })
-        console.log(data);
-        // setData(initialTargets);
+        setData(initialTargets);
     }
 
     return(

@@ -16,6 +16,8 @@
   font-size: 1.8em;
   font-weight: bold;
   color: var(--black);
+  opacity: 0;
+  animation: var(--show);
 }
 
 .todoDiv {
@@ -32,9 +34,21 @@
 }
 
 .todoForm {
-  width: 40%;
   margin-bottom: 3%;
   position: relative;
+  opacity: 0;
+  animation: showForm 1.5s ease-in-out forwards;
+  animation-delay: 0.8s;
+}
+
+@keyframes showForm {
+  from {
+    width: 1%;
+  }
+  to {
+    width: 40%;
+    opacity: 1;
+  }
 }
 
 .todoForm input,
@@ -77,6 +91,9 @@
   padding: 1%;
   border-radius: 8px;
   width: 40%;
+  opacity: 0;
+  animation: var(--show);
+  animation-delay: 1.5s;
 }
 
 .todoLists ul {
@@ -96,7 +113,7 @@
 
 @keyframes showTodo {
   from {
-    transform: translateY(15px);
+    transform: translateX(15px);
   }
   to {
     opacity: 1;
@@ -104,17 +121,17 @@
 }
 
 .todoLists li:hover {
-  background-color: rgb(241, 253, 251);
+  background-color: var(--lighterColor);
 }
 
 .checkIcon {
   margin-right: 5px;
 }
 .checkedIcon {
-  color: pink;
+  color: var(--pink);
 }
 .checkedTodo {
-  color: pink;
+  color: var(--pink);
   text-decoration: line-through;
 }
 
@@ -153,7 +170,7 @@
 
 .icon:hover,
 .checkIcon:hover {
-  color: pink;
+  color: var(--pink);
 }
 
 .todoDel {
@@ -171,15 +188,25 @@
 .delModal > div {
   border-radius: 5px;
   border: 1px solid var(--lightBlack);
-  background-color: var(--lightColor);
+  background-color: var(--pink);
   box-shadow: var(--shadow1);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 5px;
-  padding: 1%;
-  animation: showTodo 0.8s ease-in-out;
+  padding: 3% 8%;
+  opacity: 0;
+  animation: showDel 0.8s ease-in-out forwards;
+}
+
+@keyframes showDel {
+  from {
+    transform: translateY(10%);
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .delModal > div > p {
@@ -191,18 +218,24 @@
   margin: 8px;
 }
 .delBtns button {
+  border-radius: 5px;
   cursor: pointer;
-  margin: 5px;
+  margin: 3px;
+  padding: 5px 8px;
   border: none;
-  background-color: var(--lightColor);
+  background-color: white;
   font-family: var(--font);
+  transition: var(--transition2);
+}
+.delBtns button:hover {
+  background-color: var(--lightColor);
 }
 
 .logout {
   position: absolute;
   right: 3%;
   bottom: 0;
-  background-color: pink;
+  background-color: var(--pink);
   padding: 5px;
   border: 1px solid black;
   box-shadow: var(--shadow1);
