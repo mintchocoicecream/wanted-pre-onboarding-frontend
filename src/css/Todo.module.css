@@ -106,6 +106,18 @@
 
 .todoLi {
   cursor: default;
+  width: 100%;
+}
+
+.todoEditContent {
+  border: none;
+  font-family: var(--font);
+  font-size: 1em;
+  cursor: auto;
+}
+
+.todoEditContent:focus {
+  background-color: var(--lightColor);
 }
 
 .todoBtns {

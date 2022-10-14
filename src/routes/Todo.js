@@ -6,9 +6,11 @@ import { Link } from "react-router-dom";
 import TodoList from "../components/TodoList";
 
 function Todo({url}){
-    const URL = url;
-    const LOGIN_KEY = "login_info";
-    const savedInfos = localStorage.getItem(LOGIN_KEY);
+    const axioses = {
+        URL : url,
+        LOGIN_KEY : "login_info",
+    }
+    const savedInfos = localStorage.getItem(axioses.LOGIN_KEY);
 
     const initialTargets = {
         todo: ""
@@ -21,7 +23,7 @@ function Todo({url}){
         if(!savedInfos){
             document.location.href = "/";
         }
-        axios.get(URL+"todos", {
+        axios.get(axioses.URL+"todos", {
             headers: {
                 Authorization: `Bearer ${savedInfos}`
             }
@@ -34,7 +36,7 @@ function Todo({url}){
         }).catch((err)=>{
             console.log(err);
         })
-    }, [URL, savedInfos, todosArr])
+    }, [axioses.URL, savedInfos, todosArr])
 
     const handleChange = ({target}) => {
         setTodos({
@@ -46,7 +48,7 @@ function Todo({url}){
     const handleClick = (e) => {
         e.preventDefault();
         if(todos.todo !== ""){
-            axios.post(URL+"todos", {
+            axios.post(axioses.URL+"todos", {
                 todo: todos.todo,
             }, {
                 headers: {
@@ -66,7 +68,7 @@ function Todo({url}){
     }
 
     const onLogout = () => {
-        localStorage.removeItem(LOGIN_KEY);
+        localStorage.removeItem(axioses.LOGIN_KEY);
         document.location.href = "/";
     }
 
@@ -85,7 +87,7 @@ function Todo({url}){
                 <div className="todoLists">
                     <ul>
                         {todoArr.map((td) => (
-                            <TodoList key={td.id} todo={td.todo} todoId={td.id}/>
+                            <TodoList key={td.id} todo={td.todo} todoId={td.id} axiosObj={axioses} storage={savedInfos}/>
                         ))}
                     </ul>
                 </div>
