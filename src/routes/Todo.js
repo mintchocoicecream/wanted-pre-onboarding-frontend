@@ -85,9 +85,10 @@ function Todo({url}){
                     <button onClick={handleClick}><FontAwesomeIcon icon={faSquarePlus} size="2x"/></button>
                 </div>
                 <div className="todoLists">
+                    <h3>To:Do</h3>
                     <ul>
                         {todoArr.map((td) => (
-                            <TodoList key={td.id} todo={td.todo} todoId={td.id} axiosObj={axioses} storage={savedInfos}/>
+                            <TodoList key={td.id} todo={td.todo} todoId={td.id} todoComplete={td.isCompleted} axiosObj={axioses} storage={savedInfos}/>
                         ))}
                     </ul>
                 </div>

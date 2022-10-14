@@ -72,6 +72,7 @@
 }
 
 .todoLists {
+  flex-direction: column;
   border: 2px solid var(--mainColor);
   padding: 1%;
   border-radius: 8px;
@@ -80,6 +81,7 @@
 
 .todoLists ul {
   width: 100%;
+  position: relative;
 }
 
 .todoLists li {
@@ -97,11 +99,23 @@
     transform: translateY(15px);
   }
   to {
+    opacity: 1;
   }
 }
 
 .todoLists li:hover {
-  background-color: pink;
+  background-color: rgb(241, 253, 251);
+}
+
+.checkIcon {
+  margin-right: 5px;
+}
+.checkedIcon {
+  color: pink;
+}
+.checkedTodo {
+  color: pink;
+  text-decoration: line-through;
 }
 
 .todoLi {
@@ -114,6 +128,7 @@
   font-family: var(--font);
   font-size: 1em;
   cursor: auto;
+  transition: all 0.3s ease-in-out;
 }
 
 .todoEditContent:focus {
@@ -130,17 +145,57 @@
   text-align: center;
 }
 
-.icon {
+.icon,
+.checkIcon {
   cursor: pointer;
   transition: var(--transition2);
 }
 
-.icon:hover {
-  color: var(--mainColor);
+.icon:hover,
+.checkIcon:hover {
+  color: pink;
 }
 
 .todoDel {
   margin-left: 5px;
+}
+
+.delModal {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  top: 0;
+}
+
+.delModal > div {
+  border-radius: 5px;
+  border: 1px solid var(--lightBlack);
+  background-color: var(--lightColor);
+  box-shadow: var(--shadow1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  padding: 1%;
+  animation: showTodo 0.8s ease-in-out;
+}
+
+.delModal > div > p {
+  margin: 5px;
+  cursor: default;
+}
+
+.delBtns {
+  margin: 8px;
+}
+.delBtns button {
+  cursor: pointer;
+  margin: 5px;
+  border: none;
+  background-color: var(--lightColor);
+  font-family: var(--font);
 }
 
 .logout {

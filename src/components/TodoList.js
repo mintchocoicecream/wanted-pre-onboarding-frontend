@@ -1,9 +1,10 @@
+import { faSquareCheck } from "@fortawesome/free-regular-svg-icons";
 import { faCheck, faPenToSquare, faTrashCan, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import React, { useState } from "react";
 
-function TodoList({todo, todoId, axiosObj, storage}){
+function TodoList({todo, todoId, todoComplete, axiosObj, storage}){
     const URL = axiosObj.URL;
     const content = todo;
     const todosId = todoId;
@@ -13,14 +14,12 @@ function TodoList({todo, todoId, axiosObj, storage}){
 
     const [editChange, setEditChange] = useState({...initialEdits});
     const [edit, setEdit] = useState(false);
-    const [editId, setEditId] = useState("");
     const [delModal, setDelModal] = useState(false);
+    const [checked, setChecked] = useState(todoComplete);
     //updateTodo
     const handleEdit = (e) => {
         e.preventDefault();
-        const parentNode = e.currentTarget.parentNode;
         setEdit(true);
-        setEditId(parentNode.parentNode.id);
     }
 
     const handleEditChange = ({target}) => {
@@ -32,9 +31,9 @@ function TodoList({todo, todoId, axiosObj, storage}){
 
     const handleEditSubmit = () => {
         if(editChange.todo !== ""){
-            axios.put(URL+`todos/${editId}`, {
+            axios.put(URL+`todos/${todosId}`, {
                 todo: editChange.todo,
-                isCompleted: true
+                isCompleted: todoComplete
             }, {
                 headers: {
                     Authorization: `Bearer ${storage}`
@@ -57,13 +56,11 @@ function TodoList({todo, todoId, axiosObj, storage}){
     //deleteTodo
     const handleDel = (e) => {
         e.preventDefault();
-        const parentNode = e.currentTarget.parentNode.parentNode;
-        setEditId(parentNode.parentNode.id);
         setDelModal(true);
     }
 
     const handleDelOK = () => {
-        axios.delete(URL+`todos/${editId}`, {
+        axios.delete(URL+`todos/${todosId}`, {
             headers: {
                 Authorization: `Bearer ${storage}`
             }
@@ -77,12 +74,36 @@ function TodoList({todo, todoId, axiosObj, storage}){
         setDelModal(false);
     }
     //checkTodo
+    const handleCheck = async() => {
+        setChecked(!todoComplete);
+        try{
+            await axios.put(URL+`todos/${todosId}`, {
+                todo: content,
+                isCompleted: !todoComplete
+            }, {
+                headers: {
+                    Authorization: `Bearer ${storage}`
+                }
+            })
+        }catch{
+        }
+    }
     return(
         <>
             <li id={todosId}>
             {edit===false?(
                 <>
-                    <span className="todoLi">{content}</span>
+                    {checked===false?(
+                        <>
+                            <FontAwesomeIcon className="checkIcon" icon={faSquareCheck} onClick={handleCheck}/>
+                            <span className="todoLi">{content}</span>       
+                        </>
+                    ):(
+                        <>
+                            <FontAwesomeIcon className="checkIcon checkedIcon" icon={faSquareCheck} onClick={handleCheck}/>
+                            <span className="todoLi checkedTodo">{content}</span>
+                        </>
+                    )}
                     <span className="todoBtns">
                         <span className="todoEdit" onClick={handleEdit}>
                             <FontAwesomeIcon className="icon" icon={faPenToSquare}></FontAwesomeIcon>
@@ -108,8 +129,13 @@ function TodoList({todo, todoId, axiosObj, storage}){
         </li>   
         {delModal === true &&(
             <div className="delModal">
-                <button onClick={handleDelOK}>Ok</button>
-                <button onClick={handleDelCancel}>Cancel</button>
+                <div>
+                    <p>"확인"을 누르면 삭제됩니다.</p>
+                    <div className="delBtns">
+                        <button onClick={handleDelOK}>확인</button>
+                        <button onClick={handleDelCancel}>취소</button>
+                    </div>
+                </div>
             </div>
         )}  
         </>
