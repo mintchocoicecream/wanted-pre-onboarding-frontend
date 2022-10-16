@@ -1,5 +1,14 @@
 # 원티드 프리온보딩 프론트엔드 - 선발 과제
 
+## 사용 기술
+- React
+- React Router
+- Axios
+- FontAwesome
+- Github Pages
+  <br /><br /><br /><br />
+
+
 ## 프로젝트 실행 방법
   ### - 먼저, 프로젝트 실행을 위해 README 가장 아래에 있는 [Link](#link)를 클릭해 주세요.
   
